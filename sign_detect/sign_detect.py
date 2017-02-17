@@ -2,6 +2,7 @@ from collections import deque
 import argparse
 import imutils
 import cv2
+
 import numpy as np
 import math
 from array import array
@@ -18,95 +19,6 @@ global frequency_range
 frequency_range = 16050
 global rate
 rate = 44100
-
-
-def check_rec(c, frame):
-    x, y, w, h = cv2.boundingRect(c)
-    area = w * h
-
-    sp = frame[x:x+w, y:y+h]
-    ones = np.ones(sp.shape)
-    # print frame[x:x+w, y:y+h]
-    # print frame
-    try:
-        real_area = float(sum(sum(np.multiply(sp, ones))))/255
-        return (area - float(real_area))/area
-    except:
-        return 0
-
-
-def show(frame):
-    cv2.imshow("Frame", frame)  # ? frame , takes to much time!
-
-
-def initial_sign_detection(camera, args):
-    place = (-1, -1)
-    # print "start"
-    while True:
-        (grabbed, frame) = camera.read()
-        frame = imutils.resize(frame, width=400)
-        frame = cv2.flip(frame, 1)
-        cv2.imshow("ff", frame)
-        if not grabbed:
-            print "nemishe"
-            continue
-        # hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        # gray_scale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-        blue, red, green = cv2.split(frame)
-        # diff_green = green - gray_scale
-        diff_green = green - np.maximum(red, blue)
-        green_erode = cv2.erode(green, None, iterations=2)
-        green_mask = cv2.dilate(green_erode, None, iterations=2)
-        ret, green_mask = cv2.threshold(green_mask, 120, 255, cv2.THRESH_BINARY)
-        #
-        # green_mask = green_mask / 255
-        # red_mask = red_mask / 255
-        # blue_mask = blue_mask / 255
-        #
-        # green_mask, red_mask, blue_mask = green_mask - (red_mask + blue_mask), \
-        #                                   red_mask - (green_mask + blue_mask), blue_mask - (green_mask + red_mask)
-        # green_mask = ((green_mask + 3) / 4) * 255
-        # red_mask = ((red_mask + 3) / 4) * 255
-        # blue_mask = ((blue_mask + 3) / 4) * 255
-        #
-        # red_mask = red_mask - (green_mask + blue_mask)
-        #
-        # blue_mask = blue_mask - (green_mask + red_mask)
-
-        # print green_mask
-        # ret_green, green_mask = cv2.threshold(green_mask, .5, 3, cv2.THRESH_BINARY)
-        # print green_mask
-
-        # mask = red_mask  # decide on color
-        # cnts_temp = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
-        #                              cv2.CHAIN_APPROX_SIMPLE)[-2]  # ?
-        # center = None
-        # ind = 0
-        # cnts = []
-        # for c in cnts_temp:
-        #     if cv2.contourArea(c) > 40:
-        #         cnts.append(c)
-
-        # only proceed if at least one contour was found
-        # if len(cnts) > 0:
-        #     # find the largest contour in the mask, then use
-        #     # it to compute the minimum enclosing circle and
-        #     # centroid
-        #     c = max(cnts, key=cv2.contourArea)
-        #     ((x, y), radius) = cv2.minEnclosingCircle(c)
-        #     M = cv2.moments(c)  # ?
-        #     center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
-        #     cv2.circle(frame, (int(x), int(y)), int(radius),
-        #                (0, 255, 255), 2)
-        #     cv2.circle(frame, center, 5, (0, 0, 255), -1)
-
-
-        show(green_mask)
-
-
-        # cordinate, area,
-    # print "done"
 
 
 def create_noise(frequency=440, amplitude=32600, duration=0.2):
@@ -182,7 +94,13 @@ def main():
 
         if args.get("video") and not grabbed:
             break
+        import copy
+        #yc = copy.copy(frame)
+        firstframe = copy.copy(frame)
+        yc = cv2.cvtColor(frame, cv2.COLOR_RGB2YCR_CB)
 
+        cv2.equalizeHist(yc[0])
+        frame = cv2.cvtColor(yc, cv2.COLOR_YCR_CB2RGB)
 
         frame = cv2.flip(frame, 1)
 
@@ -221,7 +139,8 @@ def main():
         # print green_mask[x:x+w, y:y+h]
         center = (x, y, R)
         cv2.circle(temp_frame, (int(x), int(y)), int(R), (0, 255, 0))  # draw rectangle!
-        show(temp_frame)
+
+        cv2.imshow('frame', temp_frame)
         cv2.imshow('as', mask)
         key = cv2.waitKey(1000) & 0xFF  # ?
         if key == ord('y'):
@@ -244,15 +163,10 @@ def main():
         y = int(CR[0][1])
         R = int(CR[1])
 
-        page_size = 3
-        # down_side = x-int(page_size * last_place[2])
-        # up_side = x+int(page_size * last_place[2])
-        # left_side = y-int(page_size * last_place[3])
-        # right_side = y+int(page_size * last_place[3])
 
         left_side = max(x - 30 - R, 0)
-        right_side = x + 30+ R
-        up_side = max(y - 30- R, 0)
+        right_side = x + 30 + R
+        up_side = max(y - 30 - R, 0)
         down_side = y + 30 + R
 
         for q in [left_side, right_side, up_side, down_side]:
@@ -271,9 +185,8 @@ def main():
         down_side = min(down_side, frame.shape[0])
         # print "left ", left_side, "right: ", right_side, "up: ", up_side, "down: ", down_side
         # print keep_frame.shape
-
+        white_frame = frame[up_side + 20:down_side - 35, left_side + 20:right_side - 30, :]
         frame = frame[up_side:down_side, left_side:right_side, :]
-        cropped = frame.copy()
 
         # if we are viewing a video and we did not grab a frame,
         # then we have reached the end of the video
@@ -282,6 +195,22 @@ def main():
 
         blue, red, green = cv2.split(frame)
 
+        red_white_channel, blue_white_channel, green_white_channel = cv2.split(white_frame)
+
+        red_erode = cv2.erode(red_white_channel, None, iterations=1)
+        red_mask = cv2.dilate(red_erode, None, iterations=1)
+        ret, red_white = cv2.threshold(red_mask, 100, 255, cv2.THRESH_BINARY)
+
+        blue_erode = cv2.erode(blue_white_channel, None, iterations=1)
+        blue_mask = cv2.dilate(blue_erode, None, iterations=1)
+        ret, blue_white = cv2.threshold(blue_mask, 100, 255, cv2.THRESH_BINARY)
+
+        green_erode = cv2.erode(green_white_channel, None, iterations=1)
+        green_mask = cv2.dilate(green_erode, None, iterations=1)
+        ret, green_white = cv2.threshold(green_mask, 100, 255, cv2.THRESH_BINARY)
+
+        white_mask = np.multiply(np.multiply(green_white, red_white), blue_white)
+        # print sum(sum(white_mask))
         diff_green = green - np.maximum(red, blue)
         green_erode = cv2.erode(diff_green, None, iterations=3)
         green_mask = cv2.dilate(green_erode, None, iterations=1)
@@ -290,8 +219,7 @@ def main():
         mask = green_mask  # decide on color
         cnts_temp = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
                                      cv2.CHAIN_APPROX_SIMPLE)[-2]  # ?
-        center = None
-        ind = 0
+
         cnts = []
 
         for c in cnts_temp:
@@ -326,46 +254,81 @@ def main():
                 break
             else:
                 cnts.remove(c)
+        cv2.circle(keep_frame, (int(CR[0][0]), int(CR[0][1])), int(CR[1]), (255, 0, 0), 3)
+        def size(p):
+            return (sum([x*x for x in p]))**(0.5)
+
+        def tetha(CR):
+            import math
+            sc = size((CR[0] - 320, CR[1]-240))
+            sa = size((-320, 0))
+            dot = (CR[0]-320)*(-320)
+            cost = float(dot)/(sc*sa)
+            # print CR, sc, sa, dot, cost
+            return math.degrees(math.acos(cost))
+
+        angle = tetha(CR[0])
+        if CR[0][1] > 240:
+            angle = 360 - angle
+        cell = int(angle/45)
+        if size((CR[0][0] - 320, CR[0][1]-240)) < 123:
+            cell = 8
+
+        print cell
 
         if flag:
             try:
-
-                old_pos = (x, y)
-
-                new_pos = (CR[0][0], CR[0][1])
-                x_dis, y_dis =  new_pos[0] - old_pos[0], new_pos[1] - old_pos[1]
-
-                dis = (x_dis**2 + y_dis**2)**.5
-                print 'dis: ', dis
+                pass
+                # old_pos = (x, y)
+                #
+                # new_pos = (CR[0][0], CR[0][1])
+                # x_dis, y_dis = new_pos[0] - old_pos[0], new_pos[1] - old_pos[1]
+                #
+                # dis = (x_dis**2 + y_dis**2)**.5
+                dis = 0
                 if dis < 3:
                     pass
                 else:
-                    xp, yp = win32api.GetCursorPos()
-                    print "old: ", old_pos, "new : ", new_pos, "xdis: ", x_dis, "ydis : ", y_dis, "dis: ", dis
-                    print "CR: ", CR[0]
-                    print "old xp : ", xp, "old yp: ", yp
-                    xx, yy = 1366, 768
-                    xp += x_dis
-                    yp += y_dis
-                    xp = max(0, min(int(xp), xx))
-                    yp = max(0, min(int(yp), yy))
-                    print "new xp : ", xp, "new yp: ", yp
-                    win32api.SetCursorPos((xp, yp))
+                    # xp, yp = win32api.GetCursorPos()
+
+                    # xx, yy = 1366, 768
+                    # xp += x_dis
+                    # yp += y_dis
+                    # xp = max(0, min(int(xp), xx))
+                    # yp = max(0, min(int(yp), yy))
+                    pass
+                    # win32api.SetCursorPos((xp, yp))
+
+                ss = sum(sum(white_mask))
+                # print "ss: ", ss
+                # if ss > 9000:
+                #     noise_file = create_noise()
+                #     print noise_file
+                #     pygame.mixer.music.load(noise_file)
+                #     pygame.mixer.music.play()
+
+                    # click on xp, yp
 
             except:
                 pass
             # update the points queue
 
-        # !!! center can be just compared with old one, and change amplitude or frequency
-        # loop over the set of tracked points
 
-
-
-        # ? frame , takes to much time!
-        # cv2.circle(keep_frame, (600, 0), 10, (255, 0, 0))
-        cv2.imshow("frame", frame)
-        cv2.imshow('frame2', green_mask)
+        cv2.circle(keep_frame, center=(320, 240), radius=120, color=(0, 255, 255), thickness=3)
+        cv2.line(keep_frame, pt1=(320, 240), pt2=(0, 240), color=(0, 255, 255), thickness=3)
+        cv2.line(keep_frame, pt1=(320, 240), pt2=(0, 480), color=(0, 255, 255), thickness=3)
+        cv2.line(keep_frame, pt1=(320, 240), pt2=(0, 0), color=(0, 255, 255), thickness=3)
+        cv2.line(keep_frame, pt1=(320, 240), pt2=(320, 0), color=(0, 255, 255), thickness=3)
+        cv2.line(keep_frame, pt1=(320, 240), pt2=(640, 0), color=(0, 255, 255), thickness=3)
+        cv2.line(keep_frame, pt1=(320, 240), pt2=(640, 480), color=(0, 255, 255), thickness=3)
+        cv2.line(keep_frame, pt1=(320, 240), pt2=(640, 240), color=(0, 255, 255), thickness=3)
+        cv2.line(keep_frame, pt1=(320, 240), pt2=(320, 480), color=(0, 255, 255), thickness=3)
+        cv2.circle(keep_frame, center=(0, 240), radius=5, color=(255, 0, 0), thickness=3)
+        # cv2.imshow("frame", frame)
+        # cv2.imshow('frame2', green_mask)
+        cv2.imshow('frist shit', frame)
         cv2.imshow('frame3', keep_frame)
+        # cv2.imshow('frame4', white_mask)
 
         key = cv2.waitKey(10) & 0xFF  # ?
 

@@ -9,24 +9,29 @@ from pygame.mixer import Sound, get_init, pre_init
 import pygame
 import wave
 import struct
+import win32api
+
 
 global counter
 counter = 0
+global frequency_range
+frequency_range = 16050
 global rate
 rate = 44100
 
 
-def create_noise(frequency=440, amplitude=32676):
+def create_noise(frequency=440, amplitude=32600, duration=0.2):
     global counter
     name = 'noise'+str(counter)+".wav"
     counter += 1
     counter %= 100
+    rate = 44100
     noise_output = wave.open(name, 'w')
-    noise_output.setparams((2, 2, 44100, 0, 'NONE', 'not compressed'))
+    noise_output.setparams((2, 2, rate, 0, 'NONE', 'not compressed'))
 
     values = []
-    rate = 44100
-    samples = [float(math.sin(2.0 * math.pi * frequency * t / rate)) for t in xrange(0, int(0.2 * rate))]
+
+    samples = [float(math.sin(2.0 * math.pi * frequency * t / rate)) for t in xrange(0, int(duration * rate))]
 
     for i in range(0, len(samples)):
         packed_value = struct.pack('h', int(amplitude * samples[i]))
@@ -39,6 +44,7 @@ def create_noise(frequency=440, amplitude=32676):
     noise_output.close()
     return name
 
+
 def init_sound_player():
     pygame.mixer.pre_init()
     pygame.mixer.init()
@@ -49,7 +55,6 @@ def init_sound_player():
 def main():
     global rate
     channel = init_sound_player()
-
 
     frequency = 440
     amplitude = 32600
@@ -78,7 +83,6 @@ def main():
     while True:
         # grab the current frame
         (grabbed, frame) = camera.read()
-
 
         # if we are viewing a video and we did not grab a frame,
         # then we have reached the end of the video
@@ -130,10 +134,10 @@ def main():
             change_x = pts[-1][0] - pts[-2][0] if (pts[-1] and pts[-2]) else 0
             change_y = pts[-1][1] - pts[-2][1] if (pts[-1] and pts[-2]) else 0
 
-            frequency += change_x * 10
-            frequency = (abs(frequency) % 60000) + 47 if change_x else frequency
+            frequency += change_x * 5
+            frequency = (abs(frequency) % frequency_range) + 47 if change_x else frequency
             amplitude += change_y * 25
-            amplitude = abs(amplitude) % 32600 if change_y else amplitude
+            amplitude = (abs(amplitude) % 32600) if change_y else amplitude
 
             noise_file = create_noise(frequency, amplitude)
             pygame.mixer.music.load(noise_file)
@@ -141,7 +145,7 @@ def main():
 
             print frequency, amplitude, noise_file
 
-        # !!! center can be just compared with old one, and change domain or frequency
+        # !!! center can be just compared with old one, and change amplitude or frequency
         # loop over the set of tracked points
         ''' for i in xrange(1, len(pts)):
             # if either of the tracked points are None, ignore
