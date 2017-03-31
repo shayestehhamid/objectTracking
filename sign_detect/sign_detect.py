@@ -10,7 +10,7 @@ from pygame.mixer import Sound, get_init, pre_init
 import pygame
 import wave
 import struct
-import win32api
+
 
 
 global counter
