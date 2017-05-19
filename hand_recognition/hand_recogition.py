@@ -13,7 +13,7 @@ class Camera():
 
     @staticmethod
     def get_moblie(url):
-        url = 'http://192.168.1.7:8080/videofeed'
+        url = 'http://192.168.43.69:8080/videofeed'
 
         stream = urllib.urlopen(url)
         bytes = ''
@@ -172,8 +172,8 @@ class HandDetectNumber(HandDetect):
         self.canny(self.frame)
         # self.res = scipy.logical_and(self.hand_colored_frame, self.edge_frame)
         # self.res = scipy.logical_and(self.remove_background_frame, self.res)
-        # self.res = scipy.logical_and(self.hand_colored_frame, self.remove_background_frame)
-        self.res = self.remove_background_frame
+        self.res = scipy.logical_and(self.hand_colored_frame, self.remove_background_frame)
+        # self.res = self.remove_background_frame
         self.res = scipy.logical_or(self.res, self.frame_edge())
         # self.res = self.remove_background_frame
         self.res = 255 * self.res

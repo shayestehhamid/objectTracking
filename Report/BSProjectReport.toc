@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {0.1}Main Project Idea}{2}
+\contentsline {subsection}{\numberline {0.1.1}Goal}{2}
+\contentsline {section}{\numberline {0.2}First Sample}{2}
+\contentsline {subsection}{\numberline {0.2.1}Abstract}{2}
+\contentsline {subsection}{\numberline {0.2.2}Details}{2}
+\contentsline {section}{\numberline {0.3}Percussion Idea}{3}
+\contentsline {subsection}{\numberline {0.3.1}Abstract}{3}
+\contentsline {subsection}{\numberline {0.3.2}Details}{3}
+\contentsline {subsubsection}{Detecting Strike}{3}
+\contentsline {subsubsection}{Element size}{3}
+\contentsline {section}{\numberline {0.4}Object Tracking}{4}
+\contentsline {subsection}{\numberline {0.4.1}Improving the Tracking system}{4}
+\contentsline {subsubsection}{Step 1}{4}
+\contentsline {subsubsection}{Step 2}{4}
+\contentsline {subsubsection}{Step 3}{5}
+\contentsline {subsubsection}{Step 4}{5}
+\contentsline {subsubsection}{Step 5}{5}
+\contentsline {subsubsection}{Step 6}{6}
+\contentsline {subsubsection}{Step 7}{7}
+\contentsline {section}{\numberline {0.5}Future Work}{8}
+\contentsline {section}{\numberline {0.6}Other Technologies}{8}

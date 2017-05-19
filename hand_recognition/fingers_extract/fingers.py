@@ -11,10 +11,18 @@ import os
 
 
 
+
+start = time.time()
+results = [[] for _ in range(5)]
+
+
 for folder in xrange(0, 5):
 	size = 0 
 	for f in os.listdir("./"+str(folder)+"/"):
+
 		image = cv2.imread("./"+str(folder)+"/"+f, cv2.IMREAD_GRAYSCALE)
+		# print image.shape	 (138, 103)
+
 		left, right, up = -1, -1, -1
 		for i in xrange(image.shape[1]):
 			s = np.sum(image[:, i])
@@ -32,10 +40,10 @@ for folder in xrange(0, 5):
 				up = i
 				break
 		image = image[up:, left:right]
-
-		# print image.shape	 (138, 103)
+		from copy import copy
+		kept_image = copy(image)
 		# image[image.shape[0]-1, :] = 0
-		image = image[0:image.shape[0]-8, :]
+		image = image[0:image.shape[0]-3, :]
 		row_size = np.sum(image[image.shape[0]-1, :])
 
 		while True:
@@ -90,12 +98,39 @@ for folder in xrange(0, 5):
 		predict = len(starts)
 		row1 = -1
 		row2 = -1
-		if len(starts) == 2:
+		if predict == 2:
 			row1 = starts[0][0]
 			row2 = starts[1][0]
 			if abs(row1 - row2) > 15:
 				predict = 1
 			
+		if predict == 1:
+			# print image.shape
+			image = kept_image
+			imgval = []
+			for c in xrange(image.shape[1]):
+				for r in xrange(image.shape[0]):
+					if image[r, c] == 255:
+						imgval.append(r)
+						break
+		
+			try:
+				if abs(max(imgval) - min(imgval)) < 40:
+					predict = 0
+			except:
+				# print "exception", folder
+				predict = 0
 
-		print predict, folder, f, abs(row1 - row2), row1, row2
-		cv2.imwrite("./res/"+str(folder)+"/res"+f, image)
+		# print predict, folder, f, abs(row1 - row2), row1, row2
+		if predict != folder:
+			print folder, f, predict
+		results[folder].append(predict == folder)
+
+		# cv2.imwrite("./res/"+str(folder)+"/res"+f, image)
+
+finish = time.time()
+
+for i in range(5):
+	print i, ": ", float(sum(results[i]))/len(results[i]), sum(results[i]), len(results[i])
+
+print "time", finish - start
