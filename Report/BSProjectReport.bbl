@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Lan(2017)]{Lang}
+Definition of language, May 2017.
+\newblock URL \url{https://www.merriam-webster.com/dictionary/language}.
+
+\end{thebibliography}

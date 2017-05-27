@@ -1,25 +1,31 @@
 \documentclass{report}
 \usepackage{graphicx}
+\usepackage[round]{natbib}
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{bib.bib} % with extension
 
 
 \begin{document}
 
 \author{Hamid Shayestehmanesh}
-\title{Creating a instrument based on movement in webcam view}
+\title{Creating a instrument based on movements in webcam view}
 \maketitle
 \tableofcontents
 \newpage
 
 \section{Main Project Idea}
-The main problem this project is based is to build a HCI application which can shape the music.In other words, we want to design and build an application which is able to translate hands movements to meaningful sounds and build a new electronic music instrument.
+
+The main problem this project is based is to build a HCI application which can shape the music. In other words, we want to design and build an application which is able to translate hands movements to meaningful sounds and build a new electronic music instrument.
 \subsection{More Specified}
-In this project we are following the goal to design an architecture of such a application and building a prototype. To detect hands movement we use different colored cameras and regular speakers to generated sounds. Devices and implementation area will be discussed in details later.
+In this project we are following the goal to design an architecture of such program and building a prototype. To detect hands movement we use different colored cameras and regular speakers to generate sounds. Devices and implementation environment will be discussed in details later.
 \pagebreak
 
 
 \section{Literature}
-This section is the most important section in the report. All next details are gained based on information explained in this chapter. This section tries to translate needed knowledge of music from musician language to computer scientists language. 
-\subsection{Note Language and Important Information}
+This section is the most important section in the report. All next parts are based on information explained in this chapter. This section tries to translate needed knowledge of music from musician language to computer scientists language. 
+\subsection{Music Language and Important Information}
+any one of the systems of signs and words that are used by a particular group of people to communicate and transfer knowledge about a specific subject is called a language\citep{Lang}. Nowadays, translation has become very common but, it faces different difficulties. Finding the best word in destination language, demonstrating emotions and feelings and, keeping the structure of the article are some of the hardest problems of translating. Here, we are trying to translate language of a musician to an engineer language. So, we will explain different important aspect of musical notes which are mandatory to know about while building a new instrument.  
+
 time
 frequency
 fasele hashoon, 
@@ -109,4 +115,7 @@ To play notes we break the frame into 9 parts, one for silence and 8 others for 
 It can be implemented on Android or any other mobile frameworks.
 \section{Other Technologies}
 A programming language called Chuck has been created in Princeton university. ChucK is a programming language for real-time sound synthesis and music creation. The problem with this language is that it's doesn't support any library which can use webcam or any type of camera, neither easy way to connect it to another programming language.
+\bibliographystyle{plainnat}
+\bibliography{bibfile}
+
 \end{document}
