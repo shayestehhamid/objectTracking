@@ -2,21 +2,23 @@
 \contentsline {subsection}{\numberline {0.1.1}More Specified}{2}
 \contentsline {section}{\numberline {0.2}Literature}{3}
 \contentsline {subsection}{\numberline {0.2.1}Music Language and Important Information}{3}
-\contentsline {subsubsection}{Conclusion}{3}
-\contentsline {subsection}{\numberline {0.2.2}Important Information that are not in note Language}{3}
-\contentsline {subsection}{\numberline {0.2.3}More Information about music}{3}
-\contentsline {section}{\numberline {0.3}First Sample}{4}
-\contentsline {subsection}{\numberline {0.3.1}Abstract}{4}
-\contentsline {subsection}{\numberline {0.3.2}Details}{4}
-\contentsline {section}{\numberline {0.4}Object Tracking}{4}
-\contentsline {subsection}{\numberline {0.4.1}Improving the Tracking system}{4}
-\contentsline {subsubsection}{Step 1}{4}
-\contentsline {subsubsection}{Step 2}{5}
-\contentsline {subsubsection}{Step 3}{6}
-\contentsline {subsubsection}{Step 4}{6}
-\contentsline {subsubsection}{Step 5}{6}
-\contentsline {subsubsection}{Step 6}{7}
-\contentsline {subsubsection}{Step 7}{8}
-\contentsline {section}{\numberline {0.5}Playing Notes}{9}
-\contentsline {section}{\numberline {0.6}Future Work}{9}
-\contentsline {section}{\numberline {0.7}Other Technologies}{10}
+\contentsline {subsubsection}{Note Language}{3}
+\contentsline {subsection}{\numberline {0.2.2}Meta Data}{4}
+\contentsline {subsection}{\numberline {0.2.3}Conclusion}{4}
+\contentsline {section}{\numberline {0.3}Architecture}{4}
+\contentsline {section}{\numberline {0.4}Implementation}{5}
+\contentsline {subsection}{\numberline {0.4.1}Prototype}{5}
+\contentsline {subsubsection}{Abstract}{5}
+\contentsline {subsubsection}{Prototype}{5}
+\contentsline {subsection}{\numberline {0.4.2}Object Tracking}{5}
+\contentsline {subsubsection}{Try 1}{6}
+\contentsline {subsubsection}{Try 2}{6}
+\contentsline {subsubsection}{Try 3}{7}
+\contentsline {subsubsection}{Try 4}{7}
+\contentsline {subsubsection}{Try 5}{7}
+\contentsline {subsubsection}{Try 6}{8}
+\contentsline {subsubsection}{Try 7}{9}
+\contentsline {section}{\numberline {0.5}Playing Notes}{10}
+\contentsline {section}{\numberline {0.6}OpenCV}{10}
+\contentsline {section}{\numberline {0.7}Future Work}{10}
+\contentsline {section}{\numberline {0.8}Other Technologies}{11}
