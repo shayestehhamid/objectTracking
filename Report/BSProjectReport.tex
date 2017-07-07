@@ -17,7 +17,7 @@
 
 The main idea in this project is to build a HCI application which can shape the music and users can draw it. In other words, we want to design and build an application which is able to translate hands movements to meaningful sounds and build a new electronic music instrument.
 \subsection{More Specified}
-In this project we are following the goal to design an architecture of such program and building a prototype. To detect hands and their movements we use different colored cameras and regular speakers are used to generate sounds. Devices and implementation environment will be discussed in details later.
+The goals of this project is to design an architecture of such application and build a prototype to detect hands and their movements. To do so, we use different colored cameras and regular speakers are used to generate sounds. Devices and implementation environment will be discussed in details later.
 \pagebreak
 
 
@@ -79,13 +79,13 @@ To conclude from an engineer approach, to play a song we need to know frequency 
 
 \pagebreak
 \section{Implementation}
-During this section, first prototype is discussed, then we will discuss one advanced input. 
+During this section, first the prototype is discussed, then we will discuss one advanced input. 
 
 
 
 \subsection{Prototype}
 
-\subsubsection{Abstract}{A minimal model is implemented using Python, OpenCV(Tracking the Object) and Pygame(Generating Sounds). In this model there is an element detected by camera which frequency and amplitude is computed base on its coordinates. Coordination of the element identifies by color segmentation.}
+\subsubsection{Abstract}{A minimal model is implemented using Python, OpenCV and Pygame based on our proposed architecture. In this model there is an element detected by camera which frequency and amplitude is computed base on its coordinates. Coordination of the element identifies by color segmentation.}
 
 \iffalse
 Vertically changes the frequency of sound and moving it horizontally changes sounds' amplitude
@@ -96,58 +96,82 @@ complete the prototype part and
 \fi
 
 \subsubsection{Prototype}
-The prototype works with one specific element. The idea is to determine the place of the element and use the coordination for the rest of the application. To find the element coordinates, we use color segmentation, in other word, we convert every pixel to black except those have the specified color. Filtering the color or color segmentation will give us a black and white frame which everything should be black but the element due to the fact that it is built in the specified color. In practice some other small areas will be converted to white. \textbf{figure folan! noise!} To solve this problem we add a noise reduction after getting the black and white image. \textit{Eroding} and \textit{Dilating} the image will fairly solve the noise problem. Eroding will :: . Dilating will :::. By performing Erode and Dilate functions continuthe small white pieces will be removed \textit{figure folan!}. It will also remove around the element part which may turn it to a few parts. Dilating is used to merge the main white unit if it's affected by the Erode function. In next step we should identify the element by one point to track it's movements. To detect the center of element, first draw a contour around each white color region. As a contour won't usually have a good shape, find the minimum circle around the contour to have a presentation of the element coordination in frame. Choose the biggest circle if there is more than one contour. Also the center of circle is a good one-point identifier. \newline
-Next, by comparing two last center of this imaginary circle can help us detect any movement of the element. Now that we have coordination and movement, we can update our frequency and amplitude. Generate and play a sound with specified frequency and amplitude using Pygame. Moving vertically change the frequency of sound and moving it horizontally changes sounds' amplitude.  \newline
+The prototype works with one specific element. The idea is to determine coordination of the object and use it as inputs. To find the element coordinates, we use color segmentation, in other word, we convert every pixel to black except those have a color with some special characteristics. Filtering the color or color segmentation will give us a black and white frame which everything should be black but the element due to the fact that it is built in the color. In practice some other small areas will be converted to white. \textbf{figure folan! noise! fogire az 2 3ta az hamina ke noise dashte bashe.} To solve this problem we add a noise reduction procedure after getting the black and white image. \textit{Eroding} and \textit{Dilating} the image will fairly solve the noise problem. Eroding will :definitions: . Dilating will :definition:. By performing Erode and Dilate functions small white pieces will be removed \textit{figure folan! result of the noise removed after ouna}. It will also remove around the element part which may turn it to a few parts. Dilating is used to merge the main white unit if it's affected by the Erode function. In next step we should identify the element by one point to track it's movements. To detect the center of element, first draw a contour around each white color region. As a contour won't usually have a good shape, find the minimum circle around the contour. This makes a good represent of the element coordination in frame. Choose the biggest circle if there is more than one contour. Also the center of circle is a good \textit{one-point} identifier. \newline
+Next, by comparing two last center of this imaginary circles can help us detect any movement of the element. Now that we have coordination and movement, we can update our frequency and amplitude. Generate and play a sound with specified frequency and amplitude using Pygame. Moving vertically changes frequency of sound and move it horizontally change sounds' amplitude.  \newline
 
 \subsection{Object Tracking}
 As mentioned we need to detect and follow an object in camera streams. In this section we will demonstrate how and why the object is evolved. We will discuss each element one by one and explain their flaws.
 
 \subsubsection{Try 1}
-The first two Objects are recognized by their size and color in frames. The problem with these two objects is that if any object with the same color appears in the frame and has an appropriate size, the system may follow the wrong object. So the system is not robust. \newline
+The first two objects are recognized by their size and color in frames. The problem with these objects is that if any object with the same color appears in the frame and has an appropriate size, the system may follow the wrong object. So the system is not robust. \newline
 \begin{center}
 \includegraphics[width=1in]{Object1.jpg}
-\includegraphics[width=3in]{Object1-2.jpg}\newline \figurename{Object1} Used from top (second image)	
+\includegraphics[width=3in]{Object1-2.jpg}\newline \figurename{Object1} Used from top (right image)	
 \end{center}
 \subsubsection{Try 2}
-One easy idea to solve the problem is to increase the size of the object. This way 
+One easy idea to solve the problem is to increase the size of the object. This way it become the largest object and must be recognized easier.
 \begin{center}
 	\includegraphics[width=3in]{Object2.jpg} \newline \figurename{Object2} Used from side 
 \end{center}
-Due to the fact that this step still recognize the object by size and color increasing the size won't help, mostly because of noises, sometimes the contour around the detected color becomes small specially in fast pace movements. Also increasing the size of the object has two consequences, first due to big size of the contour around the detected object it cannot move upon one direction much. It's shorter than what it should be. A little noise can change the center's coordination too much and make the system very vulnerable to noise. Another point is that an element with this size is far from practical. 
+Due to the fact that this step still recognize the object by size and color increasing the size won't help, mostly because of noises, sometimes the contour around the detected color becomes small specially in fast pace movements. Also increasing the size of the object has two consequences, first due to big size of the contour around the detected object it cannot move upon one direction much. It's shorter than what it should be. A little noise can change the center's coordination too much and make the system very vulnerable to noise. To sum up, an element with this size is far from practical. 
 \subsubsection{Try 3}
 In next attempt we need to resize the element and 
-One Idea to solve the problem is to create a specific background, therefore the colored point won't be lost in the background color. First attempt with this idea is one stick on hand. \newline
+one idea to solve the size problem is to create a local background, therefore the colored point won't be lost in the background color. First attempt with this idea is one stick on hand. \newline
 \begin{center}
 	\includegraphics[width=3in]{Object3.jpg}\newline \figurename{The green color was seperated to detect the point}
 \end{center}
 \subsubsection{Try 4}
-Even though a green stick on the finger seems detectable but in practice the color of skin is not very stable so it isn't very helpful as a background, also in light has a enormous effect on the color.
+Even though a green stick on the finger seems detectable but in practice the color of skin is not very stable so it isn't very helpful as a background, also light has a enormous effect on the color.
 \subsubsection{Try 5}
-To solve the problem some red stick are added in up and down and then on left and right. Even the system works fine with only  up and down red sticks but adding left and right ones will help the system when very bright lights exists in the frame.
+To solve the problem some red stick are added up and down and then on left and right. Even the system works fine with only  up and down red sticks but adding left and right ones will help the system when very bright lights exists in the frame and makes it more robust to light.
 \begin{center}
-	\includegraphics[width=2in]{Object4.jpg}
-	\includegraphics[width=2in]{Object5.jpg}
+	\includegraphics[width=2in]{Object4.jpg}  
+	\includegraphics[width=2in]{Object5.jpg} 
 \end{center}
-Due to the fact that sticks are very annoying I created something with papers.
+Due to the fact that sticks are very annoying on hands I created something with papers.
 \begin{center}
 	\includegraphics[width=2in]{Object6.jpg} \newline
 	\figurename{Created with papers}
 \end{center}
 
 \subsubsection{Try 6}
-The papered object worked fine but because of the small background sometimes following the point became hard. To solve the problem we use the fact that one's hand won't move very fast, so if call current position of point $p_1 = (x_1, y_1)$ and next position $p_2 = (x_2, y_2)$ then the distance between $p_1, p_2$ is less than $C$. So if we know the place of point, so we don't have to search the hole next frame to find the point. We have to search only a part of it, so a square with upper left point of $p_1 - (C, C)$ and the lower right point of $p_1 + (C, C)$ 
+The papered object worked fine but because of the small background sometimes following the point became hard. To solve the problem we use the fact that one's hand won't move very fast, so if name current position of point $p_1 = (x_1, y_1)$ and next position $p_2 = (x_2, y_2)$ then the distance between $p_1, p_2$ is less than a constant $C$. So if we know the place of object's center, so we don't have to search the hole next frame to find the point. We have to search only a part of it. A square with upper left point of $p_1 - (C, C)$ and the lower right point of $p_1 + (C, C)$ seems adequate to search. With this object the system works very find and follows the target very well but it is common to lose the target in sharp lights.
 \subsubsection{Try 7}
-If we could ever make the background bigger the system could work more robust. We created a glove with the point one it. The big background it used to create help the system to track the point using only mentioned square. 
+If we could ever make the background bigger to omit sharp lights more, the system could work in more complex situations. We created a glove with a circle on it. The big background it creates around the circle and the local square search mentioned in try 6 helps the system to track the point very well even if sharp light exists. 
 \begin{center}
 	\includegraphics[width=3in]{Object7.jpg}
 \end{center}
-This object works very well but yet light can make huge distractions. To solve the problem we change many different color for the glove ( as the background ) (Colors are shown below) and the Red Dark seemed to work better than others. 
+ Different colors like, blue, black, white, light red, dark red were test as glove and the best color to use as a local background for a green circle is dark red. Not a very standard evaluation has been done to choose it. Colors have been test by sticking a green color on them and them using the system and then the best color has been chosen by author(tester). 
 \begin{center}
 	\includegraphics[width=3in]{Object8.jpg}
 \end{center}
 
-\section{Playing Notes}
-To play notes we break the frame into 9 parts, one for silence and 8 others for 8 different notes. Shown below.
+\subsection{Playing Notes}
+To play notes we break the frame into 9 parts, one for silence and 8 others for 8 different notes. Shown below. Each .2 seconds the place of object is detected and a new note based on object coordination will be played.
+
+\subsection{Counting Number of Fingers}
+As we discussed an instrument need a few different inputs. Human Computer Interface (HCI)
+is the term used to refer the technologies that have been developed for interacting with machines. \textit{refrence kumar14}. As commonly instruments play with hands we want to focus on one bare hand input. Number of open fingers can be an input to choose the note or the amplitude. This algorithm will work based on \textit{refrence kumar14}. Some parts are changed and became even easier. If there is more than one hands in the frame our algorithm is capable of understanding it therefore, each hand can be used as a different input to the system.
+\subsubsection{Method}
+We can sub-divide the whole procedure into small manageable fragments described as under.
+\begin{enumerate}
+\item{Hand extraction}
+\item{Noise reduction}
+\item{Calculation of Centroid and orientation}
+\item{BFS algorithm to count fingers}
+\item{Update class zero, one and two}
+\end{enumerate}
+\subsubsection{Hand Extraction}
+
+
+\subsubsection{Noise Reduction}
+
+
+\subsubsection{Calculation of Centroid and Orientation}
+
+\subsubsection{BFS Algorithm to Fount Fingers}
+
+\subsubsection{Update Class Zero, One and Two}
 
 \section{OpenCV}
 

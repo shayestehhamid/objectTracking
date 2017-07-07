@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.4.5)  12 JUN 2017 18:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.4.5)  6 JUL 2017 18:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -166,12 +166,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--101
 
  []
 
-
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
-[5] <Object1.jpg, id=28, 200.24812pt x 611.28375pt>
+<Object1.jpg, id=28, 200.24812pt x 611.28375pt>
 File: Object1.jpg Graphic file (type jpg)
  <use Object1.jpg>
 Package pdftex.def Info: Object1.jpg used on input line 108.
@@ -189,60 +189,69 @@ File: Object2.jpg Graphic file (type jpg)
 Package pdftex.def Info: Object2.jpg used on input line 114.
 (pdftex.def)             Requested size: 216.81pt x 122.45848pt.
  [6 <./Object1.jpg> <./Object1-2.jpg> <./Object2.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+Underfull \hbox (badness 10000) in paragraph at lines 118--120
 
  []
 
 <Object3.jpg, id=35, 963.6pt x 544.28343pt>
 File: Object3.jpg Graphic file (type jpg)
  <use Object3.jpg>
-Package pdftex.def Info: Object3.jpg used on input line 120.
+Package pdftex.def Info: Object3.jpg used on input line 121.
 (pdftex.def)             Requested size: 216.81pt x 122.45848pt.
 
 <Object4.jpg, id=36, 544.28343pt x 963.6pt>
 File: Object4.jpg Graphic file (type jpg)
  <use Object4.jpg>
-Package pdftex.def Info: Object4.jpg used on input line 127.
+Package pdftex.def Info: Object4.jpg used on input line 128.
 (pdftex.def)             Requested size: 144.54pt x 255.88211pt.
 
 <Object5.jpg, id=37, 544.28343pt x 963.6pt>
 File: Object5.jpg Graphic file (type jpg)
  <use Object5.jpg>
-Package pdftex.def Info: Object5.jpg used on input line 128.
+Package pdftex.def Info: Object5.jpg used on input line 129.
 (pdftex.def)             Requested size: 144.54pt x 255.88211pt.
  [7 <./Object3.jpg>] <Object6.jpg, id=41, 485.56406pt x 521.69907pt>
 File: Object6.jpg Graphic file (type jpg)
  <use Object6.jpg>
-Package pdftex.def Info: Object6.jpg used on input line 132.
+Package pdftex.def Info: Object6.jpg used on input line 133.
 (pdftex.def)             Requested size: 144.54pt x 155.29297pt.
  [8 <./Object4.jpg> <./Object5.jpg> <./Object6.jpg>]
 <Object7.jpg, id=46, 544.28343pt x 963.6pt>
 File: Object7.jpg Graphic file (type jpg)
  <use Object7.jpg>
-Package pdftex.def Info: Object7.jpg used on input line 141.
+Package pdftex.def Info: Object7.jpg used on input line 142.
 (pdftex.def)             Requested size: 216.81pt x 383.8305pt.
-
-<Object8.jpg, id=47, 544.28343pt x 963.6pt>
+ [9]
+<Object8.jpg, id=51, 544.28343pt x 963.6pt>
 File: Object8.jpg Graphic file (type jpg)
  <use Object8.jpg>
-Package pdftex.def Info: Object8.jpg used on input line 145.
+Package pdftex.def Info: Object8.jpg used on input line 146.
 (pdftex.def)             Requested size: 216.81pt x 383.8305pt.
- [9 <./Object7.jpg>] (./BSProjectReport.bbl [10 <./Object8.jpg>] [11]
+ [10 <./Object7.jpg>]
+
+Package natbib Warning: Citation `lang' on page 11 undefined on input line 153.
+
+
+[11 <./Object8.jpg>] (./BSProjectReport.bbl [12]
 Underfull \hbox (badness 10000) in paragraph at lines 9--11
 []\OT1/cmr/m/n/10 Definition of lan-guage, May 2017.  URL
  []
 
-) [12
+)
+
+Package natbib Warning: There were undefined citations.
+
+[13
 
 ] (./BSProjectReport.aux) ) 
 Here is how much of TeX's memory you used:
- 1899 strings out of 495028
- 26235 string characters out of 6181498
+ 1900 strings out of 495028
+ 26241 string characters out of 6181498
  84291 words of memory out of 5000000
- 5098 multiletter control sequences out of 15000+600000
+ 5099 multiletter control sequences out of 15000+600000
  9015 words of font info for 32 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,6n,23p,1548b,179s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,6n,23p,1648b,179s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
@@ -253,10 +262,10 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on BSProjectReport.pdf (13 pages, 589526 bytes).
+Output written on BSProjectReport.pdf (14 pages, 593460 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 99 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

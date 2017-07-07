@@ -18,7 +18,8 @@
 \contentsline {subsubsection}{Try 5}{7}
 \contentsline {subsubsection}{Try 6}{8}
 \contentsline {subsubsection}{Try 7}{9}
-\contentsline {section}{\numberline {0.5}Playing Notes}{10}
-\contentsline {section}{\numberline {0.6}OpenCV}{10}
-\contentsline {section}{\numberline {0.7}Future Work}{10}
-\contentsline {section}{\numberline {0.8}Other Technologies}{11}
+\contentsline {subsection}{\numberline {0.4.3}Playing Notes}{11}
+\contentsline {subsection}{\numberline {0.4.4}Counting Number of fingers}{11}
+\contentsline {section}{\numberline {0.5}OpenCV}{12}
+\contentsline {section}{\numberline {0.6}Future Work}{12}
+\contentsline {section}{\numberline {0.7}Other Technologies}{12}
