@@ -19,7 +19,13 @@
 \contentsline {subsubsection}{Try 6}{8}
 \contentsline {subsubsection}{Try 7}{9}
 \contentsline {subsection}{\numberline {0.4.3}Playing Notes}{11}
-\contentsline {subsection}{\numberline {0.4.4}Counting Number of fingers}{11}
-\contentsline {section}{\numberline {0.5}OpenCV}{12}
-\contentsline {section}{\numberline {0.6}Future Work}{12}
-\contentsline {section}{\numberline {0.7}Other Technologies}{12}
+\contentsline {subsection}{\numberline {0.4.4}Counting Number of Fingers}{11}
+\contentsline {subsubsection}{Method}{12}
+\contentsline {subsubsection}{Hand Extraction}{12}
+\contentsline {subsubsection}{Noise Reduction}{13}
+\contentsline {subsubsection}{Calculation of Centroid and Orientation}{13}
+\contentsline {subsubsection}{BFS-based Algorithm to ount Fingers}{13}
+\contentsline {subsubsection}{Update Class Zero, One and Two}{13}
+\contentsline {section}{\numberline {0.5}OpenCV}{13}
+\contentsline {section}{\numberline {0.6}Future Work}{13}
+\contentsline {section}{\numberline {0.7}Other Technologies}{13}

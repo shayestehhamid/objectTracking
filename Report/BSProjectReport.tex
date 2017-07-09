@@ -155,24 +155,45 @@ is the term used to refer the technologies that have been developed for interact
 \subsubsection{Method}
 We can sub-divide the whole procedure into small manageable fragments described as under.
 \begin{enumerate}
-\item{Hand extraction}
 
+\item{Hand extraction}
 \item{Noise reduction}
 \item{Calculation of Centroid and orientation}
 \item{BFS algorithm to count fingers}
 \item{Update class zero, one and two}
 \end{enumerate}
-\subsubsection{Hand Extraction}
-
-
-\subsubsection{Noise Reduction}
+\subsubsection{Hand Extraction and Noise Reduction}
+To extract the hand we do have some assumption and use three different methods and combine their result together to have a better hand result. In this part we are trying to obtain the best image of the hand for rest of our algorithm but, the exact shape a hand appears. For example, assume a hand with fat fingers. Two adjacent fingers may stick together when they are open which is not appropriate for our algorithm. We like a firm space between two neighbor fingers so those may not detected as same. We color skin segmentation, edge detection and background elimination to find and extract hand. Before working on extraction we need to improve our image brightness so we perform histogram equalization on each frame. This will help to get a better result in environment with sharp lights. 
+% bayad behtar beshe vase inke agar noor ziad bashe chizaie badi etefagh miofte. vase sade kardan rang 0 behtar kardan vaziat noor hast
+\begin{enumerate}
+	\item[Color Segmentation]{A very good explanation of skin color is B < G < R in a RGB pixel. The big problem with this solution is that it may detect some other stuff like a wooden case in the background or users yellow T-shirt(C1)\textit{refrence be maghale avali ke rang dasht}.}
+	\item[Background Elimination]{In this method first we obtain the background and then we eliminate it from frames containing hand. This will reach to the hand and other new objects in the frame. \textit{hamoon maghale} uses the first frame as the background which won't work properly with all cameras because common cameras need a second to demonstrate the frames stably. Usual some first frames are to shiny or dark to be used as background but after some frames (50 frames for here) it is stable and can be used as background.(B1)} % vase gereftane background bayad 3seconds 150 ta frame aval ignore beshe. bekhatere inke chize khoobi azash dar nemiad. va masalan rang va noor khoob nist. mesal az frame aval va frame akhar. albate in rabt be camera ham dare. 
+	\item[Edge Detection] {First edges in background are determined and then edges from current frame and edges in current frame which do not exists in background are left in a frame called E1. Canny function is used to extract edges.}
+\end{enumerate}
+Then these three frames are converted to binary black and white images. Then we call D1 as logically or function of E1 and A1 where A1 is logically and of C1 and B1. Finally result is cleaned by erode and Gaussian function. 
+\textit{some figure of left images}
 
 
 \subsubsection{Calculation of Centroid and Orientation}
+Finding Orientation is an important factor in the algorithm as it helps the algorithm to be valid
+even if the hand is placed slightly inclined or slanted rather than in the ideal upright orientation. A
+very simple and basic approach has been followed to find the orientation of the hand.
+copy the rest too!
 
-\subsubsection{BFS Algorithm to Fount Fingers}
+\subsubsection{BFS-based Algorithm to Count Fingers}
+To count the number of open fingers we use the fact that the top point of an open finger is considerably above of rest of the hand. So we start from the top row and move down to find the first line having white pixels. This means we have found a finger so we remove this finger and repeat the algorithm till there is some white pixel on the image. To remove the finger we perform following algorithm \begin{enumerate}
+	\item{Color current pixel as black}
+	\item{repeat from left/right/bottom pixel if white}
+\end{enumerate}
+regardless of fingers orientation, it is removed after running mentioned algorithm. After first run(removing first finger) hands palm is removed too. But, when no finger is open there is at least one starting point to remove the white pixels. Also as shown in \textit{figure folan } hands with one open finger are usually fully cleaned with two starting points. 
+
 
 \subsubsection{Update Class Zero, One and Two}
+
+
+\subsubsection{Performance Analysis}
+
+\subsubsection{Conclusion}
 
 \section{OpenCV}
 
