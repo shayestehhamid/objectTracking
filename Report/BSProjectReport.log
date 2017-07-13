@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.29)  9 JUL 2017 17:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.4.5)  13 JUL 2017 17:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **BSProjectReport.tex
 (./BSProjectReport.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@chapter=\count80
@@ -25,22 +25,22 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \bibindent=\dimen102
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 95.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -63,23 +63,38 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count89
 )
-(./BSProjectReport.aux)
+(./BSProjectReport.aux
+
+! Package natbib Error: Bibliography not compatible with author-year citations.
+
+(natbib)                Press <return> to continue in numerical citation style.
+
+
+See the natbib package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.73 ...mand\NAT@force@numbers{}\NAT@force@numbers
+                                                  
+Check the bibliography entries for non-compliant syntax,
+or select author-year BibTeX style, e.g. plainnat
+
+)
 \openout1 = `BSProjectReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count90
 \scratchdimen=\dimen105
@@ -141,122 +156,202 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 12.
+(Font)              <12> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 12.
+(Font)              <8> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 12.
+(Font)              <6> on input line 13.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./BSProjectReport.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 1.
+(Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1.
-)
-\tf@toc=\write3
-\openout3 = `BSProjectReport.toc'.
-
+(Font)              <5> on input line 2.
 
 [1
 
-] [2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
+])
+\tf@toc=\write3
+\openout3 = `BSProjectReport.toc'.
+
+ [2]
+Chapter 1.
+[3
+
+]
+Chapter 2.
+<180px-Eighth_notes_and_rest.png, id=20, 180.675pt x 114.4275pt>
+File: 180px-Eighth_notes_and_rest.png Graphic file (type png)
+
+<use 180px-Eighth_notes_and_rest.png>
+Package pdftex.def Info: 180px-Eighth_notes_and_rest.png used on input line 36.
+
+(pdftex.def)             Requested size: 72.26999pt x 45.77019pt.
+ [4
+
+] [5 <./180px-Eighth_notes_and_rest.png>] [6]
+Chapter 3.
+[7
+
+]
+Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+[8
 
- []
-
-<Object1.jpg, id=28, 200.24812pt x 611.28375pt>
+] <Object1.jpg, id=41, 200.24812pt x 611.28375pt>
 File: Object1.jpg Graphic file (type jpg)
  <use Object1.jpg>
-Package pdftex.def Info: Object1.jpg used on input line 108.
+Package pdftex.def Info: Object1.jpg used on input line 117.
 (pdftex.def)             Requested size: 72.26999pt x 220.61229pt.
 
-<Object1-2.jpg, id=29, 398.99063pt x 289.08pt>
+<Object1-2.jpg, id=42, 398.99063pt x 289.08pt>
 File: Object1-2.jpg Graphic file (type jpg)
  <use Object1-2.jpg>
-Package pdftex.def Info: Object1-2.jpg used on input line 109.
+Package pdftex.def Info: Object1-2.jpg used on input line 118.
 (pdftex.def)             Requested size: 216.81pt x 157.08452pt.
 
-<Object2.jpg, id=30, 963.6pt x 544.28343pt>
+<Object2.jpg, id=43, 963.6pt x 544.28343pt>
 File: Object2.jpg Graphic file (type jpg)
  <use Object2.jpg>
-Package pdftex.def Info: Object2.jpg used on input line 114.
+Package pdftex.def Info: Object2.jpg used on input line 126.
 (pdftex.def)             Requested size: 216.81pt x 122.45848pt.
- [6 <./Object1.jpg> <./Object1-2.jpg> <./Object2.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 118--120
+ [9 <./Object1.jpg> <./Object1-2.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 132--134
 
  []
 
-<Object3.jpg, id=35, 963.6pt x 544.28343pt>
+<Object3.jpg, id=47, 963.6pt x 544.28343pt>
 File: Object3.jpg Graphic file (type jpg)
  <use Object3.jpg>
-Package pdftex.def Info: Object3.jpg used on input line 121.
+Package pdftex.def Info: Object3.jpg used on input line 136.
 (pdftex.def)             Requested size: 216.81pt x 122.45848pt.
-
-<Object4.jpg, id=36, 544.28343pt x 963.6pt>
+ [10 <./Object2.jpg> <./Object3.jpg>] <Object4.jpg, id=51, 544.28343pt x 963.6p
+t>
 File: Object4.jpg Graphic file (type jpg)
- <use Object4.jpg>
-Package pdftex.def Info: Object4.jpg used on input line 128.
-(pdftex.def)             Requested size: 144.54pt x 255.88211pt.
 
-<Object5.jpg, id=37, 544.28343pt x 963.6pt>
-File: Object5.jpg Graphic file (type jpg)
- <use Object5.jpg>
-Package pdftex.def Info: Object5.jpg used on input line 129.
+<use Object4.jpg>
+Package pdftex.def Info: Object4.jpg used on input line 147.
 (pdftex.def)             Requested size: 144.54pt x 255.88211pt.
- [7 <./Object3.jpg>] <Object6.jpg, id=41, 485.56406pt x 521.69907pt>
+ <Object5.jpg, id=52, 544.28343pt x 963.6pt>
+File: Object5.jpg Graphic file (type jpg)
+
+<use Object5.jpg>
+Package pdftex.def Info: Object5.jpg used on input line 148.
+(pdftex.def)             Requested size: 144.54pt x 255.88211pt.
+ <Object6.jpg, id=53, 485.56406pt x 521.69907pt>
 File: Object6.jpg Graphic file (type jpg)
- <use Object6.jpg>
-Package pdftex.def Info: Object6.jpg used on input line 133.
+
+<use Object6.jpg>
+Package pdftex.def Info: Object6.jpg used on input line 155.
 (pdftex.def)             Requested size: 144.54pt x 155.29297pt.
- [8 <./Object4.jpg> <./Object5.jpg> <./Object6.jpg>]
-<Object7.jpg, id=46, 544.28343pt x 963.6pt>
-File: Object7.jpg Graphic file (type jpg)
- <use Object7.jpg>
-Package pdftex.def Info: Object7.jpg used on input line 142.
-(pdftex.def)             Requested size: 216.81pt x 383.8305pt.
- [9]
-<Object8.jpg, id=51, 544.28343pt x 963.6pt>
+ [11 <./Object4.jpg> <./Object5.jpg>]
+<Object8.jpg, id=58, 544.28343pt x 963.6pt>
 File: Object8.jpg Graphic file (type jpg)
  <use Object8.jpg>
-Package pdftex.def Info: Object8.jpg used on input line 146.
-(pdftex.def)             Requested size: 216.81pt x 383.8305pt.
- [10 <./Object7.jpg>] [11 <./Object8.jpg>] [12] (./BSProjectReport.bbl [13]
-Underfull \hbox (badness 10000) in paragraph at lines 9--11
-[]\OT1/cmr/m/n/10 Definition of lan-guage, May 2017.  URL
+Package pdftex.def Info: Object8.jpg used on input line 169.
+(pdftex.def)             Requested size: 144.54pt x 255.88211pt.
+
+<Object7.jpg, id=59, 544.28343pt x 963.6pt>
+File: Object7.jpg Graphic file (type jpg)
+ <use Object7.jpg>
+Package pdftex.def Info: Object7.jpg used on input line 170.
+(pdftex.def)             Requested size: 144.54pt x 255.88211pt.
+ [12 <./Object6.jpg>] [13 <./Object8.jpg> <./Object7.jpg>] <1.jpg, id=68, 401.5
+pt x 301.125pt>
+File: 1.jpg Graphic file (type jpg)
+
+<use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 199.
+(pdftex.def)             Requested size: 86.72377pt x 65.04385pt.
+ <50.jpg, id=69, 401.5pt x 301.125pt>
+File: 50.jpg Graphic file (type jpg)
+ <use 50.jpg>
+Package pdftex.def Info: 50.jpg used on input line 200.
+(pdftex.def)             Requested size: 86.72377pt x 65.04385pt.
+ [14] [15 <./1.jpg> <./50.jpg>] <one.jpg, id=77, 101.37875pt x 80.3pt>
+File: one.jpg Graphic file (type jpg)
+ <use one.jpg>
+Package pdftex.def Info: one.jpg used on input line 251.
+(pdftex.def)             Requested size: 72.26999pt x 57.24496pt.
+
+<two_distance.jpg, id=78, 66.2475pt x 31.61812pt>
+File: two_distance.jpg Graphic file (type jpg)
+ <use two_distance.jpg>
+Package pdftex.def Info: two_distance.jpg used on input line 261.
+(pdftex.def)             Requested size: 66.24733pt x 31.61803pt.
+
+<zeros.jpg, id=79, 82.05656pt x 30.1125pt>
+File: zeros.jpg Graphic file (type jpg)
+ <use zeros.jpg>
+Package pdftex.def Info: zeros.jpg used on input line 265.
+(pdftex.def)             Requested size: 82.05635pt x 30.11241pt.
+ [16] [17 <./one.jpg> <./two_distance.jpg> <./zeros.jpg>]
+Chapter 5.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ˜ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ˜ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+[18
+
+]
+Overfull \hbox (3.87239pt too wide) in paragraph at lines 293--294
+ \OML/cmm/m/it/10 beta=doc=py[]utorials=py[]mgproc=py[]orphological[]ps=py[]orp
+hological[]ps:html$ 
  []
 
-) [14
+[19]
+Chapter 6.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 300.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 300.
+ (./BSProjectReport.bbl [20
+
+]) [21
 
 ] (./BSProjectReport.aux) ) 
 Here is how much of TeX's memory you used:
- 1900 strings out of 494953
- 26245 string characters out of 6180977
- 84810 words of memory out of 5000000
- 5174 multiletter control sequences out of 15000+600000
- 9015 words of font info for 32 fonts, out of 8000000 for 9000
+ 1951 strings out of 495028
+ 27128 string characters out of 6181498
+ 84349 words of memory out of 5000000
+ 5141 multiletter control sequences out of 15000+600000
+ 9453 words of font info for 33 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,6n,23p,1648b,179s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,6n,23p,970b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on BSProjectReport.pdf (15 pages, 600459 bytes).
+mi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on BSProjectReport.pdf (22 pages, 660673 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
+ 132 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

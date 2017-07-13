@@ -1,31 +1,39 @@
-\contentsline {section}{\numberline {0.1}Main Project Idea}{2}
-\contentsline {subsection}{\numberline {0.1.1}More Specified}{2}
-\contentsline {section}{\numberline {0.2}Literature}{3}
-\contentsline {subsection}{\numberline {0.2.1}Music Language and Important Information}{3}
-\contentsline {subsubsection}{Note Language}{3}
-\contentsline {subsection}{\numberline {0.2.2}Meta Data}{4}
-\contentsline {subsection}{\numberline {0.2.3}Conclusion}{4}
-\contentsline {section}{\numberline {0.3}Architecture}{4}
-\contentsline {section}{\numberline {0.4}Implementation}{5}
-\contentsline {subsection}{\numberline {0.4.1}Prototype}{5}
-\contentsline {subsubsection}{Abstract}{5}
-\contentsline {subsubsection}{Prototype}{5}
-\contentsline {subsection}{\numberline {0.4.2}Object Tracking}{5}
-\contentsline {subsubsection}{Try 1}{6}
-\contentsline {subsubsection}{Try 2}{6}
-\contentsline {subsubsection}{Try 3}{7}
-\contentsline {subsubsection}{Try 4}{7}
-\contentsline {subsubsection}{Try 5}{7}
-\contentsline {subsubsection}{Try 6}{8}
-\contentsline {subsubsection}{Try 7}{9}
-\contentsline {subsection}{\numberline {0.4.3}Playing Notes}{11}
-\contentsline {subsection}{\numberline {0.4.4}Counting Number of Fingers}{11}
-\contentsline {subsubsection}{Method}{12}
-\contentsline {subsubsection}{Hand Extraction}{12}
-\contentsline {subsubsection}{Noise Reduction}{13}
-\contentsline {subsubsection}{Calculation of Centroid and Orientation}{13}
-\contentsline {subsubsection}{BFS-based Algorithm to ount Fingers}{13}
-\contentsline {subsubsection}{Update Class Zero, One and Two}{13}
-\contentsline {section}{\numberline {0.5}OpenCV}{13}
-\contentsline {section}{\numberline {0.6}Future Work}{13}
-\contentsline {section}{\numberline {0.7}Other Technologies}{13}
+\contentsline {chapter}{\numberline {1}Main Project Idea}{3}
+\contentsline {section}{\numberline {1.1}More Specified}{3}
+\contentsline {chapter}{\numberline {2}Literature}{4}
+\contentsline {section}{\numberline {2.1}Music Language and Important Information}{4}
+\contentsline {subsection}{\numberline {2.1.1}Note Language}{4}
+\contentsline {section}{\numberline {2.2}Meta Data}{6}
+\contentsline {section}{\numberline {2.3}Conclusion}{6}
+\contentsline {chapter}{\numberline {3}Architecture}{7}
+\contentsline {chapter}{\numberline {4}Implementation}{8}
+\contentsline {section}{\numberline {4.1}Prototype}{8}
+\contentsline {subsection}{\numberline {4.1.1}Abstract}{8}
+\contentsline {subsection}{\numberline {4.1.2}Prototype}{8}
+\contentsline {section}{\numberline {4.2}Object Tracking}{9}
+\contentsline {subsection}{\numberline {4.2.1}Try 1}{9}
+\contentsline {subsection}{\numberline {4.2.2}Try 2}{10}
+\contentsline {subsection}{\numberline {4.2.3}Try 3}{10}
+\contentsline {subsection}{\numberline {4.2.4}Try 4}{11}
+\contentsline {subsection}{\numberline {4.2.5}Try 5}{11}
+\contentsline {subsection}{\numberline {4.2.6}Try 6}{11}
+\contentsline {subsection}{\numberline {4.2.7}Try 7}{12}
+\contentsline {section}{\numberline {4.3}Playing Notes}{12}
+\contentsline {section}{\numberline {4.4}Counting Number of Open Fingers}{14}
+\contentsline {subsection}{\numberline {4.4.1}Method}{14}
+\contentsline {subsection}{\numberline {4.4.2}Hand Extraction and Noise Reduction}{14}
+\contentsline {subsection}{\numberline {4.4.3}Calculation of Centroid and Orientation}{15}
+\contentsline {subsubsection}{\numberline {4.4.3.1}Calculating centroid}{15}
+\contentsline {subsubsection}{\numberline {4.4.3.2}Calculating orientation}{15}
+\contentsline {subsection}{\numberline {4.4.4}Remove Unneeded Parts}{16}
+\contentsline {subsection}{\numberline {4.4.5}BFS-based Algorithm to Count Fingers}{16}
+\contentsline {subsection}{\numberline {4.4.6}Update Class Zero and One}{17}
+\contentsline {subsection}{\numberline {4.4.7}Performance Analysis}{17}
+\contentsline {chapter}{\numberline {5}Important Functions and OpenCV}{18}
+\contentsline {section}{\numberline {5.1}Erosion and Dilation}{18}
+\contentsline {subsection}{\numberline {5.1.1}Erosion}{18}
+\contentsline {subsection}{\numberline {5.1.2}Dilation}{18}
+\contentsline {subsection}{\numberline {5.1.3}Opening}{18}
+\contentsline {subsection}{\numberline {5.1.4}Closing}{19}
+\contentsline {section}{\numberline {5.2}cvtColor}{19}
+\contentsline {chapter}{\numberline {6}Other Technologies and Future Work}{20}

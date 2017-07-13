@@ -5,8 +5,8 @@ import cv2
 import numpy
 import math
 from array import array
-from pygame.mixer import Sound, get_init, pre_init
-import pygame
+# from pygame.mixer import Sound, get_init, pre_init
+# import pygame
 import wave
 import struct
 
@@ -39,16 +39,16 @@ def create_noise(frequency=440, amplitude=32676):
     noise_output.close()
     return name
 
-def init_sound_player():
-    pygame.mixer.pre_init()
-    pygame.mixer.init()
-    channel = pygame.mixer.Channel(0)
-    return channel
+# def init_sound_player():
+#     pygame.mixer.pre_init()
+#     pygame.mixer.init()
+#     channel = pygame.mixer.Channel(0)
+#     return channel
 
 
 def main():
     global rate
-    channel = init_sound_player()
+    # channel = init_sound_player()
 
 
     frequency = 440
@@ -86,9 +86,9 @@ def main():
 
         # resize the frame, blur it, and convert it to the HSV
         # color space
-        frame = imutils.resize(frame, width=400)
+        frame2 = imutils.resize(frame, width=400)
         # blurred = cv2.GaussianBlur(frame, (11, 11), 0)
-        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        hsv = cv2.cvtColor(frame2, cv2.COLOR_BGR2HSV)
 
         # construct a mask for the color "green", then perform
         # a series of dilations and erosions to remove any small
@@ -116,7 +116,7 @@ def main():
             if radius > 5:
                 # draw the circle and centroid on the frame,
                 # then update the list of tracked points
-                cv2.circle(frame, (int(x), int(y)), int(radius),
+                cv2.circle(frame2, (int(x), int(y)), int(radius),
                            (0, 255, 255), 2)
                 cv2.circle(frame, center, 5, (0, 0, 255), -1)
         cv2.line(frame, (0, 225), (600, 225), (0, 255, 255), thickness=2)
@@ -162,11 +162,11 @@ def main():
             # place = int(pts[-1][1] > 225) * 3 + int(pts[-1][0]/200)
             # print pts[-1]
             # print place
-            noise_file = create_noise(frequency, amplitude)
-            pygame.mixer.music.load(noise_file)
+            # noise_file = create_noise(frequency, amplitude)
+            # pygame.mixer.music.load(noise_file)
 
-            if hit:
-                pygame.mixer.music.play()
+            # if hit:
+            #     pygame.mixer.music.play()
 
 
             # print frequency, amplitude, noise_file
@@ -186,7 +186,12 @@ def main():
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
             # show the frame to our screen '''
         cv2.imshow("Frame", mask)  # ?
-
+        cv2.imshow('original', frame)
+        cv2.imshow('noise', black_whit_mask)
+        cv2.imshow('winname', frame2)
+        global counter
+        counter += 1
+        cv2.imwrite(str(counter) + ".jpg", frame2)        
         key = cv2.waitKey(1) & 0xFF  # ?
 
         # if the 'q' key is pressed, stop the loop

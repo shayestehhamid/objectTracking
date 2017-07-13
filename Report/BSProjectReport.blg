@@ -1,50 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: BSProjectReport.aux
-The style file: plainnat.bst
-Database file #1: bibfile.bib
-Warning--entry type for "Lang" isn't style-file defined
---line 11 of file bibfile.bib
-Warning--to sort, need author or key in Lang
+The style file: alpha.bst
+Database file #1: ref.bib
+Warning--I didn't find a database entry for "Lang"
 You've used 1 entry,
-            2773 wiz_defined-function locations,
-            597 strings with 4934 characters,
-and the built_in function-call counts, 276 in all, are:
-= -- 24
-> -- 0
+            2543 wiz_defined-function locations,
+            565 strings with 4603 characters,
+and the built_in function-call counts, 347 in all, are:
+= -- 32
+> -- 19
 < -- 0
-+ -- 1
-- -- 0
-* -- 20
-:= -- 30
-add.period$ -- 2
++ -- 6
+- -- 6
+* -- 21
+:= -- 70
+add.period$ -- 3
 call.type$ -- 1
-change.case$ -- 3
+change.case$ -- 6
 chr.to.int$ -- 1
-cite$ -- 4
-duplicate$ -- 15
-empty$ -- 36
-format.name$ -- 0
-if$ -- 61
+cite$ -- 1
+duplicate$ -- 13
+empty$ -- 21
+format.name$ -- 7
+if$ -- 65
 int.to.chr$ -- 1
-int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 12
-num.names$ -- 0
-pop$ -- 13
+int.to.str$ -- 0
+missing$ -- 1
+newline$ -- 8
+num.names$ -- 3
+pop$ -- 5
 preamble$ -- 1
-purify$ -- 2
+purify$ -- 7
 quote$ -- 0
 skip$ -- 14
 stack$ -- 0
-substring$ -- 3
-swap$ -- 2
+substring$ -- 7
+swap$ -- 1
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 11
-warning$ -- 1
-while$ -- 0
-width$ -- 0
-write$ -- 17
-(There were 2 warnings)
+type$ -- 8
+warning$ -- 0
+while$ -- 3
+width$ -- 2
+write$ -- 14
+(There was 1 warning)

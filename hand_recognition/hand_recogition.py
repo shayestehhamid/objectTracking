@@ -7,13 +7,17 @@ import numpy as np
 import urllib
 import time
 import math
-
+cn = 0
+global cn
 
 class Camera():
 
     @staticmethod
     def get_moblie(url):
-        url = 'http://192.168.43.69:8080/videofeed'
+        global cn
+        cn += 1
+        # url = 'http://192.168.43.69:8080/videofeed'
+        url = 'http://192.168.1.7:8080/videofeed'
 
         stream = urllib.urlopen(url)
         bytes = ''
@@ -27,7 +31,7 @@ class Camera():
                 bytes = bytes[b + 2:]
 
                 frame = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.CV_LOAD_IMAGE_COLOR)
-
+                cv2.imwrite(str('a')+str(cn) + ".jpg", frame)
                 return frame
                 # print frame.shape
                 # cv2.imshow('cam2', frame)

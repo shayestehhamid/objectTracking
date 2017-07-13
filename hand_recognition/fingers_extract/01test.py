@@ -9,10 +9,10 @@ import time
 import math
 import os
 
-vals = [[], []]
+vals = [[], [], [], [], []]
  
 
-for folder in xrange(0, 2):
+for folder in xrange(0, 5):
 	size = 0 
 
 	for f in os.listdir("./"+str(folder)+"/"):
