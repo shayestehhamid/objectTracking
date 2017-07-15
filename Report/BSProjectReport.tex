@@ -1,3 +1,30 @@
+\RequirePackage{filecontents}
+\begin{filecontents}{ref.bib}
+@article{dey2014algorithm,
+  title={Algorithm for Multi-Hand Finger Counting: An Easy Approach},
+  author={Dey, Sumit Kumar and Anand, Shubham},
+  journal={arXiv preprint arXiv:1404.2742},
+  year={2014}
+}
+@article{chen2003hand,
+  title={Hand gesture recognition using a real-time tracking method and hidden Markov models},
+  author={Chen, Feng-Sheng and Fu, Chih-Ming and Huang, Chung-Lin},
+  journal={Image and vision computing},
+  volume={21},
+  number={8},
+  pages={745--758},
+  year={2003},
+  publisher={Elsevier}
+}
+
+@article{banerjee2014mouse,
+  title={Mouse control using a web camera based on colour detection},
+  author={Banerjee, Abhik and Ghosh, Abhirup and Bharadwaj, Koustuvmoni and Saikia, Hemanta},
+  journal={arXiv preprint arXiv:1403.4722},
+  year={2014}
+}
+
+\end{filecontents}
 \documentclass{report}
 \setcounter{secnumdepth}{3}
 \usepackage{graphicx}
@@ -34,7 +61,7 @@ Note language like other languages contains some specified signs which works as 
 
 \begin{figure}
 \centering{ \includegraphics[width=1in]{180px-Eighth_notes_and_rest.png}}
-\caption{The green color was seperated to detect the point}
+\caption{The green color was separated to detect the point}
 \label{fig:notes}
 \end{figure}
 
@@ -42,7 +69,9 @@ Note language like other languages contains some specified signs which works as 
 }
 \item[Note: ]{Notes are determined as the same as octave. Actually the vertical place shows note and octave together.}
 \item[Octave and Note: ]{Octave and Note are used together to find out the exact frequency that the music should be played in. To be more specific octave show us range of frequency and Note show the exact frequency in the range.}
-\item[Length of Time: ]{In the note language length of time is handled by the shape of a  note. Any article in note language has a base time and each note means a ratio over the base time. For example, \textbf{Eighth note} \textit{reference be chang} is $1/2$ of base time. If the base time of a music is 10ms then this note means 5ms therefore, the player will play a frequency specified by the place of the note for 5ms.}
+\item[Length of Time: ]{In the note language length of time is handled by the shape of a  note. Any article in note language has a base time and each note means a ratio over the base time. For example, \textbf{Eighth note} 
+%\textit{reference be chang} 
+is $1/2$ of base time. If the base time of a music is 10ms then this note means 5ms therefore, the player will play a frequency specified by the place of the note for 5ms.}
 \end{itemize}
 However with knowing time and frequency of each note this is possible to write a meaningful song but there's some more basic operators which can make a simple music to complex one.
 \begin{itemize}
@@ -102,7 +131,14 @@ complete the prototype part and
 \subsection{Prototype}
 The prototype works with one specific element. The idea is to determine coordination of the object and use it as inputs. To find the element coordinates, we use color segmentation, in other word, we convert every pixel to black except those have a color with some special characteristics. Filtering the color or color segmentation will give us a black and white image which everything should be black but the element due to the fact that it is built in one particular color. In practice some other small areas will be converted to white. See figure \textbf{figure folan! noise! fogire az 2 3ta az hamina ke noise dashte bashe.} To solve this problem we add a noise reduction procedure after getting the black and white image. Erosion(\ref{ssec:erosion}) and Dilation(\ref{ssec:dilation})  the image will fairly solve the noise problem. By performing Erode and Dilate functions(Opening) small white pieces will be removed
 
- \textit{figure folan! result of the noise removed after ouna}.
+\begin{figure}
+\centering{
+\includegraphics[width=1.4in]{blue1.jpg} 
+\includegraphics[width=1.4in]{blue2.jpg} 
+\includegraphics[width=1.42in]{blue3.jpg} }
+\caption{(left)Original frame (middle) Color segmented frame (right) After opening.}
+\label{fig:blue}
+\end{figure}
  
   It will also remove around the element part which may turn it to a few parts. Dilating is used to merge the main white unit if it's affected by the Erode function. In next step we should identify the element by one point to track it's movements. To detect the center of element, first draw a contour around each white color region. As a contour won't usually have a good shape, find the minimum circle around the contour. This makes a good representation of the element coordination in image. Choose the biggest circle if there is more than one contour. Also the center of circle is a good \textit{one-point} identifier. \newline
 Next, by comparing two last center of this imaginary circles can help us detect any movement of the element. Now that we have coordination and movement, we can update our frequency and amplitude. Generate and play a sound with specified frequency and amplitude using Pygame. Moving vertically changes frequency of sound and move it horizontally change sounds' amplitude.  \newline
@@ -115,7 +151,7 @@ The first two objects are recognized by their size and color in frames. The prob
 
 \begin{figure}
 \centering{\includegraphics[width=1in]{Object1.jpg}
-\includegraphics[width=3in]{Object1-2.jpg}}
+\includegraphics[width=2in]{Object1-2.jpg}}
 \caption{Object1(try 1) Used from top (right image)} 	
 \end{figure}
 
@@ -126,11 +162,16 @@ One easy idea to solve the problem is to increase the size of the object. This w
 \centering{	\includegraphics[width=3in]{Object2.jpg}  }
 	\caption{Object2(try 2) - Used from side}  
 \end{figure}
-
+\begin{figure}
+\centering{
+\includegraphics[width=1.4in]{bnoise1.jpg} 
+\includegraphics[width=1.4in]{bnoise2.jpg} 
+\includegraphics[width=1.42in]{bnoise3.jpg} }
+\caption{(left)Original frame (middle) Color segmented frame (right) After opening - the system cannot decide which contour is the object.}
+\end{figure}
 Due to the fact that this step still recognize the object by size and color increasing the size won't help, mostly because of noises, sometimes the contour around the detected color becomes small specially in fast pace movements. Also increasing the size of the object has two consequences, first due to big size of the contour around the detected object it cannot move upon one direction much. It's shorter than what it should be. A little noise can change the center's coordination too much and make the system very vulnerable to noise. To sum up, an element with this size is far from practical. 
 \subsection{Try 3}
-In next attempt we need to resize the element and 
-one idea to solve the size problem is to create a local background, therefore the colored point won't be lost in the background color. First attempt with this idea is one stick on hand. \newline
+In next attempt we need to resize the element and one idea to solve the size problem is to create a local background, therefore the colored point won't be lost in the background color. First attempt with this idea is one stick on hand. \newline
 
 \begin{figure}
 \centering{\includegraphics[width=3in]{Object3.jpg}}	
@@ -177,7 +218,7 @@ To play notes we break the frame into 6 parts, for 6 different notes. Shown belo
 
 \section{Counting Number of Open Fingers}
 As we discussed an instrument needs a few different inputs. HCI
-is the term used to refer the technologies that have been developed for interacting with machines \cite{dey2014algorithm}. As commonly instruments play with hands we want to focus on one bare hand input. Number of open fingers can be an input to choose the note or the amplitude. This algorithm will work based on \textit{refrence kumar14} steps. But some steps are completely or partially changed. If there is more than one hands in an image our BFS-based algorithm is capable of working well.
+is the term used to refer the technologies that have been developed for interacting with machines \cite{dey2014algorithm}. As commonly instruments play with hands we want to focus on one bare hand input. Number of open fingers can be an input to choose the note or the amplitude. This algorithm will work based on \cite{dey2014algorithm} steps. But some steps are completely or partially changed. If there is more than one hands in an image our BFS-based algorithm is capable of working well.
 \subsection{Method}
 We can sub-divide the whole procedure into small manageable fragments described as below.
 \begin{enumerate}
@@ -193,8 +234,8 @@ We can sub-divide the whole procedure into small manageable fragments described 
 To extract the hand we do have some assumption and use three different methods and combine their result together to have a better hand result. In this part we are trying to obtain the best image of the hand for rest of our algorithm but, the exact shape of a hand. For example, assume a hand with fat fingers. Two adjacent fingers may stick together when those are open; which is not appropriate for our algorithm. We like a firm space between two neighbor fingers so those may not be detected as one. We use color skin segmentation, edge detection and background elimination to find and extract the hand. Before working on extraction we need to improve our image brightness so we perform histogram equalization on each frame. This will help to get a better result in environment with sharp lights. 
 % bayad behtar beshe vase inke agar noor ziad bashe chizaie badi etefagh miofte. vase sade kardan rang 0 behtar kardan vaziat noor hast
 \begin{enumerate}
-	\item[Color Segmentation]{A very good explanation of skin color is $B \le G \le R$ in a RGB pixel. The big problem with this solution is that it may detect some other stuff like a wooden case in the background or users yellow T-shirt. We call color segmented frame C1\textit{refrence be maghale avali ke rang dasht}.}
-	\item[Background Elimination]{In this method first we obtain the background and then we eliminate it from frames containing hand. This will reach to the hand and other new objects in the frame. \textit{hamoon maghale easy} uses the first frame as the background which won't work properly with all cameras because common cameras need a second to demonstrate the frames stably. Usual some first frames are to shiny or dark to be used as background but after some frames (50 frames for here) it is stable and can be used as background.(B1)  
+	\item[Color Segmentation]{A very good explanation of skin color is $B \le G \le R$ \cite{chen2003hand} in a RGB pixel. The big problem with this solution is that it may detect some other stuff like a wooden case in the background or users yellow T-shirt. We call color segmented frame C1 .}
+	\item[Background Elimination]{In this method first we obtain the background and then we eliminate it from frames containing hand. This will reach to the hand and other new objects in the frame. \cite{dey2014algorithm} uses the first frame as the background which won't work properly with all cameras because common cameras need a second to demonstrate the frames stably. Usual some first frames are to shiny or dark to be used as background but after some frames (50 frames for here) it is stable and can be used as background.(B1)  
 	\begin{figure}
 	\centering{\includegraphics[width=1.2in]{1.jpg}
 	\includegraphics[width=1.2in]{50.jpg}
@@ -227,7 +268,7 @@ found in section \ref{sssec:cc} Let that line joining the two centroids be repre
 line perpendicular to this line will have slope of ($-1/m_1$ ). This line, if has to pass through the
 centroid of lowest horizontal line $(x_{cb} , y_{cb} )$, will have the equation as
 This line intersects the hand almost perpendicularly and here we get our first base line. It roughly
-replicates the orientation of the hand within the range of $-45 to +45$ degree from vertical axis.  \textit{reference be hamoon kumar 14}
+replicates the orientation of the hand within the range of $-45 to +45$ degree from vertical axis\cite{dey2014algorithm}.  
 
 \subsection{Remove Unneeded Parts}
 To decrease complexity of next steps and centralize our detail we remove all fully black rows and columns. Then we remove the palm and arm if any of that exists. To remove the palm we perform following algorithm.
@@ -274,9 +315,21 @@ We tested on three individuals with different palm sizes. \newline
   Dataset 1 & 1 & 0.86 & .93 & 1 & 1  \\ \hline
   Dataset 2 & 1 & 0.86 & 1 & 1 & 0.88  \\ \hline
   Dataset 3 & 0.66 & 0.9 & 0.95 & 1 & 0.86  \\ \hline
-  
 \end{tabular}
 }
+The reason only four fingers are presented in test and tomb is remove is that if we open the tomb finger downward then it will be remove while removing the palm or when we are removing the first finger. If it's opened upward the finger removing won't hurt tomb, but still it may be removed by palm removal.
+\section{Conclusion}
+We intended to develop an algorithm as input for the architecture and implementing a prototype. The finger counting algorithm has great amount of flexibility and thus can be used for numerous applications with accurate results. \newline We proceeded with few assumptions. Firstly we assume that the hand is shown from bottom of
+the image such that fingers lie on relatively upper part of the image with respect to the rest of the
+hand.
+We successfully used the algorithm to count up to four fingers under the resolution of 800x600 obtained from Xiaomi Redmi3 prime using Ip webcam application. 
+
+All the codes was written in Python with OpenCV and they were tested on a
+machine featuring Intel Core I7-2670 3.0GHz processor and 12GB RAM on Ubuntu 14.04
+platform. We used Xiaomi Redmi3s Prime's front camera which is a 5MP, connected using Ip Webcam application for finger counting algorithm and a 2MP built in webcam on Lenovo Z570 is used for first part.
+With finger counting algorithm we can trigger 5 unique commands. By adding second hand it is increased to $5 \times 5 = 25 $ and can support at least three octave that each one contains seven notes.
+
+
 \chapter{Important Functions and OpenCV}
 \section{Erosion and Dilation}
 \subsection{Erosion} \label{ssec:erosion}
@@ -302,8 +355,8 @@ The function converts an input image from one color space to another. In case of
 \item{Improving second phase part to update class one and zero.}
 \end{itemize}
 
-
-\bibliographystyle{abbrv}
 \bibliography{ref}
+\bibliographystyle{plain}
+
 
 \end{document}
