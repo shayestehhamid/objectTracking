@@ -1,6 +1,12 @@
-\begin{thebibliography}{DA14}
+\begin{thebibliography}{1}
 
-\bibitem[DA14]{dey2014algorithm}
+\bibitem{chen2003hand}
+Feng-Sheng Chen, Chih-Ming Fu, and Chung-Lin Huang.
+\newblock Hand gesture recognition using a real-time tracking method and hidden
+  markov models.
+\newblock {\em Image and vision computing}, 21(8):745--758, 2003.
+
+\bibitem{dey2014algorithm}
 Sumit~Kumar Dey and Shubham Anand.
 \newblock Algorithm for multi-hand finger counting: An easy approach.
 \newblock {\em arXiv preprint arXiv:1404.2742}, 2014.

@@ -21,16 +21,16 @@
 \contentsline {section}{\numberline {4.3}Playing Notes}{14}
 \contentsline {section}{\numberline {4.4}Counting Number of Open Fingers}{14}
 \contentsline {subsection}{\numberline {4.4.1}Method}{14}
-\contentsline {subsection}{\numberline {4.4.2}Hand Extraction and Noise Reduction}{14}
-\contentsline {subsection}{\numberline {4.4.3}Calculation of Centroid and Orientation}{15}
-\contentsline {subsubsection}{\numberline {4.4.3.1}Calculating centroid}{15}
+\contentsline {subsection}{\numberline {4.4.2}Hand Extraction and Noise Reduction}{15}
+\contentsline {subsection}{\numberline {4.4.3}Calculation of Centroid and Orientation}{16}
+\contentsline {subsubsection}{\numberline {4.4.3.1}Calculating centroid}{16}
 \contentsline {subsubsection}{\numberline {4.4.3.2}Calculating orientation}{16}
 \contentsline {subsection}{\numberline {4.4.4}Remove Unneeded Parts}{16}
-\contentsline {subsection}{\numberline {4.4.5}BFS-based Algorithm to Count Fingers}{16}
+\contentsline {subsection}{\numberline {4.4.5}BFS-based Algorithm to Count Fingers}{17}
 \contentsline {subsection}{\numberline {4.4.6}Update Class Zero and One}{17}
 \contentsline {subsection}{\numberline {4.4.7}Performance Analysis}{18}
 \contentsline {section}{\numberline {4.5}Conclusion}{18}
-\contentsline {chapter}{\numberline {5}Important Functions and OpenCV}{19}
+\contentsline {chapter}{\numberline {5}Important Functions}{19}
 \contentsline {section}{\numberline {5.1}Erosion and Dilation}{19}
 \contentsline {subsection}{\numberline {5.1.1}Erosion}{19}
 \contentsline {subsection}{\numberline {5.1.2}Dilation}{19}

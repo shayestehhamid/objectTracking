@@ -112,7 +112,7 @@ To conclude from an engineer approach, to play a song we need to know frequency,
 
 
 \chapter{Architecture}
-As we discussed we at least need three different inputs to collect enough information to play a note and a core is necessary to convert this information to appropriate sound. Following figure demonstrate the situation.
+As we discussed we at least need three different inputs to collect enough information to play a note and a core is necessary to convert this information to appropriate sound. 
 
 
 \pagebreak
@@ -129,7 +129,7 @@ complete the prototype part and
 \fi
 
 \subsection{Prototype}
-The prototype works with one specific element. The idea is to determine coordination of the object and use it as inputs. To find the element coordinates, we use color segmentation, in other word, we convert every pixel to black except those have a color with some special characteristics. Filtering the color or color segmentation will give us a black and white image which everything should be black but the element due to the fact that it is built in one particular color. In practice some other small areas will be converted to white. See figure \textbf{figure folan! noise! fogire az 2 3ta az hamina ke noise dashte bashe.} To solve this problem we add a noise reduction procedure after getting the black and white image. Erosion(\ref{ssec:erosion}) and Dilation(\ref{ssec:dilation})  the image will fairly solve the noise problem. By performing Erode and Dilate functions(Opening) small white pieces will be removed
+The prototype works with one specific element. The idea is to determine coordination of the object and use it as inputs. To find the element coordinates, we use color segmentation, in other word, we convert every pixel to black except those have a color with some special characteristics. Filtering the color or color segmentation will give us a black and white image which everything should be black but the element due to the fact that it is built in one particular color. In practice some other small areas will be converted to white. See figure \ref{fig:blue}. To solve this problem we add a noise reduction procedure after getting the black and white image. Erosion(section \ref{ssec:erosion}) and Dilation(section \ref{ssec:dilation})  the image will fairly solve the noise problem. By performing Erode and Dilate functions(Opening) small white pieces will be removed
 
 \begin{figure}
 \centering{
@@ -199,7 +199,8 @@ Due to the fact that sticks are very annoying on hands I created something with 
 
 
 \subsection{Try 6}
-The papered object worked fine but because of the small background sometimes following the point became hard. To solve the problem we use the fact that one's hand won't move very fast, so if name current position of point $p_1 = (x_1, y_1)$ and next position $p_2 = (x_2, y_2)$ then the distance between $p_1, p_2$ is less than a constant $C$. So if we know the place of object's center, so we don't have to search the hole next frame to find the point. We have to search only a part of it. A square with upper left point of $p_1 - (C, C)$ and the lower right point of $p_1 + (C, C)$ seems adequate to search. With this object the system works very find and follows the target very well but it is common to lose the target in sharp lights.
+The papered object worked fine but because of the small background sometimes following the point became hard. To solve the problem we use the fact that one's hand won't move very fast, so if we name current position of point $p_1 = (x_1, y_1)$ and next position $p_2 = (x_2, y_2)$ then we assume that the distance between $p_1, p_2$ is less than a constant $C$. So if we know the place of object's center, so we don't have to search the hole next frame to find the point. We have to search only a part of it. A square with upper left point of $p_1 - (C, C)$ and the lower right point of $p_1 + (C, C)$ seems adequate to search. With this object the system works very fine and follows the target very well but it is common to lose the target in sharp lights. \newline
+For initialization, we choose all the possible areas and asks the user which is the target. As shown in figure \ref{fig:parts} this is not easy to choose which white area is target. As demonstrated is figure \ref{fig:parts} this technique is much more robust.   
 \subsection{Try 7}
 If we could ever make the background bigger to omit sharp lights more, the system could work in more complex situations. We created a glove with a circle on it. The big background it creates around the circle and the local square search mentioned in try 6 helps the system to track the point very well even if sharp light exists. 
 
@@ -211,10 +212,18 @@ If we could ever make the background bigger to omit sharp lights more, the syste
 \includegraphics[width=2in]{Object7.jpg}}
 \caption{Try 7, best color to be used with green is dark red.}
 \end{figure}
-	
+
+\begin{figure}
+\centering{
+\includegraphics[width=1.82in]{parts.jpg}
+\includegraphics[width=2in]{bw.jpg}
+\includegraphics[width=1in]{local.jpg}}
+\caption{Try 6-7, even the frame is very noise it  still is working fine.}
+\label{fig:parts}
+\end{figure}
 
 \section{Playing Notes}
-To play notes we break the frame into 6 parts, for 6 different notes. Shown below. Each .2 seconds the place of object is detected and a new note based on object coordination will be played. (In real implementation only one note plays.) A better split can be a partition to 9 parts like the one below.
+To play notes we break the frame into 6 parts, for 16 different notes. Shown below. Each .2 seconds the place of object is detected and a new note based on object coordination will be played. (In real implementation only one note plays).See figure \ref{fig:parts}
 
 \section{Counting Number of Open Fingers}
 As we discussed an instrument needs a few different inputs. HCI
@@ -310,13 +319,16 @@ To classify zeros from one we use the fact that all the columns in zero image ha
 
 \subsection{Performance Analysis}
 We tested on three individuals with different palm sizes. \newline
-\centering{\begin{tabular}{|l| c| c| c| c| c|} \hline
+\begin{center}
+
+
+\begin{tabular}{|l| c| c| c| c| c|} \hline
   Datasets & 0 finger & 1 finger & 2 fingers & 3 fingers & 4 fingers  \\ \hline
   Dataset 1 & 1 & 0.86 & .93 & 1 & 1  \\ \hline
   Dataset 2 & 1 & 0.86 & 1 & 1 & 0.88  \\ \hline
   Dataset 3 & 0.66 & 0.9 & 0.95 & 1 & 0.86  \\ \hline
 \end{tabular}
-}
+\end{center} 
 The reason only four fingers are presented in test and tomb is remove is that if we open the tomb finger downward then it will be remove while removing the palm or when we are removing the first finger. If it's opened upward the finger removing won't hurt tomb, but still it may be removed by palm removal.
 \section{Conclusion}
 We intended to develop an algorithm as input for the architecture and implementing a prototype. The finger counting algorithm has great amount of flexibility and thus can be used for numerous applications with accurate results. \newline We proceeded with few assumptions. Firstly we assume that the hand is shown from bottom of
@@ -330,16 +342,16 @@ platform. We used Xiaomi Redmi3s Prime's front camera which is a 5MP, connected 
 With finger counting algorithm we can trigger 5 unique commands. By adding second hand it is increased to $5 \times 5 = 25 $ and can support at least three octave that each one contains seven notes.
 
 
-\chapter{Important Functions and OpenCV}
+\chapter{Important Functions}
 \section{Erosion and Dilation}
 \subsection{Erosion} \label{ssec:erosion}
-The basic idea of erosion is just like soil erosion only, it erodes away the boundaries of foreground object (Always try to keep foreground in white). So what it does? The kernel slides through the image (as in 2D convolution). A pixel in the original image (either 1 or 0) will be considered 1 only if all the pixels under the kernel is 1, otherwise it is eroded (made to zero).
+The basic idea of erosion is just like soil erosion only, it erodes away the boundaries of foreground object (Always try to keep foreground in white). The kernel moves through the image (as in 2D convolution). A pixel in the black and white image (either white or black) will be considered white only if all the pixels under the kernel is white, otherwise it is eroded (made to black). \newline
 
-So what happens is that, all the pixels near boundary will be discarded depending upon the size of kernel. So the thickness or size of the foreground object decreases or simply white region decreases in the image. It is useful for removing small white noises (as we have seen in color space chapter), detach two connected objects etc.
+So what happens is that, all the pixels near boundary will be discarded depending upon the size of kernel. So the thickness or size of the foreground object (white contours) decreases or simply white region decreases in the image. It is useful for removing small white noises.
 \subsection{Dilation} \label{ssec:dilation}
-It is just opposite of erosion. Here, a pixel element is ‘1’ if at least one pixel under the kernel is ‘1’. So it increases the white region in the image or size of foreground object increases. Normally, in cases like noise removal, erosion is followed by dilation. Because, erosion removes white noises, but it also shrinks our object. So we dilate it. Since noise is gone, they won’t come back, but our object area increases. It is also useful in joining broken parts of an object.
+It is just opposite of erosion. Here, a pixel element is white if at least one pixel under the kernel is white. So it increases the white region in the image or size of foreground object increases. Normally, in cases like noise removal, erosion is followed by dilation. Because, erosion removes white noises, but it also shrinks our objects. So we dilate it. Since noise is gone, they won’t come back, but our object area increases. It is also useful in joining broken parts of an object.
 \subsection{Opening}
-Opening is just another name of erosion followed by dilation. It is useful in removing noise, as we explained above. Here we use the function, cv2.morphologyEx().
+Opening is just another name of erosion followed by dilation. It is useful in removing noise, as we explained above..
 \subsection{Closing}
 Closing is reverse of Opening, Dilation followed by Erosion. It is useful in closing small holes inside the foreground objects, or small black points on the object.
 
@@ -347,6 +359,8 @@ Closing is reverse of Opening, Dilation followed by Erosion. It is useful in clo
 
 \section{cvtColor}
 The function converts an input image from one color space to another. In case of a transformation to-from RGB color space, the order of the channels should be specified explicitly (RGB or BGR). Note that the default color format in OpenCV is often referred to as RGB but it is actually BGR (the bytes are reversed). So the first byte in a standard (24-bit) color image will be an 8-bit Blue component, the second byte will be Green, and the third byte will be Red. The fourth, fifth, and sixth bytes would then be the second pixel (Blue, then Green, then Red), and so on.
+
+\textit{$http://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html$}
 
 \chapter{Other Technologies and Future Work}
 \begin{itemize}

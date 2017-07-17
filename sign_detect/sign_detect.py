@@ -326,9 +326,9 @@ def main():
         cv2.circle(keep_frame, center=(0, 240), radius=5, color=(255, 0, 0), thickness=3)
         # cv2.imshow("frame", frame)
         # cv2.imshow('frame2', green_mask)
-        cv2.imshow('frist shit', frame)
+        cv2.imshow('lcal', frame)
         cv2.imshow('frame3', keep_frame)
-        # cv2.imshow('frame4', white_mask)
+        cv2.imshow('frame4', white_mask)
 
         key = cv2.waitKey(10) & 0xFF  # ?
 
